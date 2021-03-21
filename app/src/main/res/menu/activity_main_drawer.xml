@@ -4,9 +4,9 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-<!--        <item-->
-<!--            android:id="@+id/nav_gallery"-->
-<!--            android:icon="@color/cardview_shadow_end_color"-->
-<!--            android:title="@string/menu_gallery" />-->
+        <item
+            android:id="@+id/nav_welcome"
+            android:icon="@color/cardview_shadow_end_color"
+            android:title="@string/menu_welcome" />
     </group>
 </menu>
