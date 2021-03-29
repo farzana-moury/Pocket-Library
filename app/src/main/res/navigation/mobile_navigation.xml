@@ -6,6 +6,26 @@
     <fragment
         android:id="@+id/nav_welcome"
         android:name="com.example.pocketlibrary.WelcomeFragment"
-        android:label="Welcome"
+        android:label="@string/menu_welcome"
         tools:layout="@layout/fragment_welcome" />
+    <fragment
+        android:id="@+id/nav_catalog"
+        android:name="com.example.pocketlibrary.CatalogFragment"
+        android:label="@string/menu_catalog"
+        tools:layout="@layout/fragment_catalog" />
+    <fragment
+        android:id="@+id/nav_publishers"
+        android:name="com.example.pocketlibrary.PublishersFragment"
+        android:label="@string/menu_publishers"
+        tools:layout="@layout/fragment_publishers" />
+    <fragment
+        android:id="@+id/nav_books"
+        android:name="com.example.pocketlibrary.BooksFragment"
+        android:label="@string/menu_books"
+        tools:layout="@layout/fragment_books" />
+    <fragment
+        android:id="@+id/nav_credits"
+        android:name="com.example.pocketlibrary.CreditsFragment"
+        android:label="@string/menu_credits"
+        tools:layout="@layout/fragment_credits" />
 </navigation>
