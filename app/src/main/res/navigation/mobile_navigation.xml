@@ -2,11 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_welcome"
-    app:startDestination="@id/Welcome">
+    app:startDestination="@id/nav_welcome">
     <fragment
-        android:id="@+id/Welcome"
+        android:id="@+id/nav_welcome"
         android:name="com.example.pocketlibrary.WelcomeFragment"
-        android:label="fragment_welcome"
+        android:label="Welcome"
         tools:layout="@layout/fragment_welcome" />
 </navigation>
