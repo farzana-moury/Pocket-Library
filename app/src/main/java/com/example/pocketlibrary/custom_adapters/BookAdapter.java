@@ -84,6 +84,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
          */
         public CustomBookViewHolder(@NonNull View itemView) {
             super(itemView);
+            this.title = itemView.findViewById(R.id.bookTitle);
+            this.author = itemView.findViewById(R.id.bookAuthor);
+            this.description = itemView.findViewById(R.id.bookDesc);
+            this.cover = itemView.findViewById(R.id.bookCover);
+            this.rating = itemView.findViewById(R.id.bookRating);
         }
     }
 }
