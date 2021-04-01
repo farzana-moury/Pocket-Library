@@ -1,10 +1,19 @@
 package com.example.pocketlibrary.custom_adapters;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.pocketlibrary.R;
+import com.example.pocketlibrary.pojo.Book;
+
+import java.util.ArrayList;
 
 /**
  * Custom adapter class for the book recyclerview
@@ -16,10 +25,13 @@ import androidx.recyclerview.widget.RecyclerView;
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookViewHolder>{
 
     //properties
+    private ArrayList<Book> books;
+    private Context context;
 
     //constructor
-    public BookAdapter(){
-
+    public BookAdapter(ArrayList<Book> books, Context context){
+        this.books = books;
+        this.context = context;
     }
 
     //implemented methods
@@ -31,7 +43,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
     @NonNull
     @Override
     public CustomBookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.book_item_view, parent, false);
+        return new CustomBookViewHolder(view);
     }
 
     /**
@@ -40,7 +54,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
      */
     @Override
     public void onBindViewHolder(@NonNull CustomBookViewHolder holder, int position) {
-
+        Book book = books.get(position);
     }
 
     /**
@@ -48,7 +62,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
      */
     @Override
     public int getItemCount() {
-        return 0;
+        return books.size();
     }
 
     /**
@@ -59,6 +73,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
      * @version 1.0
      */
     class CustomBookViewHolder extends RecyclerView.ViewHolder{
+        protected TextView title;
+        protected TextView author;
+        protected TextView description;
+        protected ImageView cover;
+        protected TextView rating;
 
         /**
          * @param itemView itemView
