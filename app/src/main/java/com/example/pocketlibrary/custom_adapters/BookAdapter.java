@@ -77,7 +77,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
      * @since April 1st 2021
      * @version 1.0
      */
-    class CustomBookViewHolder extends RecyclerView.ViewHolder{
+    static class CustomBookViewHolder extends RecyclerView.ViewHolder{
         protected TextView title;
         protected TextView author;
         protected TextView description;
