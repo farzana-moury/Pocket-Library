@@ -55,6 +55,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
     @Override
     public void onBindViewHolder(@NonNull CustomBookViewHolder holder, int position) {
         Book book = books.get(position);
+        holder.title.setText(book.getTitle());
+        holder.author.setText(book.getAuthor());
+        holder.description.setText(book.getDescription());
+        holder.cover.setImageResource(book.getCover());
+        holder.rating.setText(String.format("%s", book.getRating()));
     }
 
     /**
