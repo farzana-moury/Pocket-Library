@@ -65,7 +65,7 @@ public class CatalogFragment extends Fragment {
 
                             for(int i=0; i<booksArray.length(); i++){
                                 String titleObj = booksArray.getJSONObject(i).getString("title");
-                                books.add(new Book(titleObj, "", "", R.drawable.side_nav_bar, 0.0));
+                                books.add(new Book(titleObj, "author goes here", "description goes heredescription goes heredescription goes heredescription goes heredescription goes here", R.drawable.side_nav_bar, 0.0));
                             }
 
                             adapter = new BookAdapter(books, getContext());
