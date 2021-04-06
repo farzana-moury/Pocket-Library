@@ -66,6 +66,7 @@ public class CatalogFragment extends Fragment {
 
                             for(int i=0; i<booksArray.length(); i++){
                                 String titleObj = booksArray.getJSONObject(i).getString("title");
+                                //TODO: Fix API Functionality - display author, description, rating and book cover
 //                                JSONArray isbnArray = booksArray.getJSONObject(i).getJSONArray("isbn");
 //                                String image = "";
 //                                image = isbnArray.getString(0);
