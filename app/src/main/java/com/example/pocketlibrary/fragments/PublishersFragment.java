@@ -58,11 +58,11 @@ public class PublishersFragment extends Fragment {
         @Override
         public Fragment createFragment(int position) {
             switch(position){
-                case 0: return PublisherFragment.newInstance("Publisher1", 0, "Description1", "url");
-                case 1: return PublisherFragment.newInstance("Publisher1", 0, "Description1", "url");
-                case 2: return PublisherFragment.newInstance("Publisher1", 0, "Description1", "url");
-                case 3: return PublisherFragment.newInstance("Publisher1", 0, "Description1", "url");
-                case 4: return PublisherFragment.newInstance("Publisher1", 0, "Description1", "url");
+                case 0: return PublisherFragment.newInstance("Publisher1", 0, "Description1", "https://www.canva.com");
+                case 1: return PublisherFragment.newInstance("Publisher1", 0, "Description2", "url");
+                case 2: return PublisherFragment.newInstance("Publisher1", 0, "Description3", "url");
+                case 3: return PublisherFragment.newInstance("Publisher1", 0, "Description4", "url");
+                case 4: return PublisherFragment.newInstance("Publisher1", 0, "Description5", "url");
                 default: return PublisherFragment.newInstance("Publisher1", 0, "Description1", "url");
             }
         }

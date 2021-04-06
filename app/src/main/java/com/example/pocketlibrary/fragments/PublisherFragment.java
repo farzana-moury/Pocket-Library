@@ -1,5 +1,7 @@
 package com.example.pocketlibrary.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +9,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.pocketlibrary.R;
+import com.google.android.material.snackbar.Snackbar;
 
 /**
  * What each publisher would look like in the viewpager2 - information it will contain
@@ -74,17 +80,33 @@ public class PublisherFragment extends Fragment {
 
         //setting the view objects to their information
         if(name != null){
-
+            TextView publisherName = view.findViewById(R.id.name);
+            publisherName.setText(name);
         }
         if(image != 0){
-
+            ImageView publisherImage = view.findViewById(R.id.image);
         }
         if(description != null){
-
+            TextView publisherDesc = view.findViewById(R.id.description);
+            publisherDesc.setText(name);
         }
-        if(url != null){
 
-        }
+        Button urlButton = view.findViewById(R.id.urlButton);
+        urlButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //using common intent to store web data
+                Uri webURL = Uri.parse(url);
+                Intent intent = new Intent(Intent.ACTION_VIEW, webURL);
+
+                // see if there is a software that can resolve this activity
+                if(intent.resolveActivity(getActivity().getPackageManager()) != null){
+                    Snackbar.make(getView(), "No app installed", Snackbar.LENGTH_SHORT).show();
+                }else{
+                    startActivity(intent);
+                }
+            }
+        });
 
         return view;
     }
