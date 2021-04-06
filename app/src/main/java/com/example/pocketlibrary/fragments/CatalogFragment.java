@@ -66,17 +66,12 @@ public class CatalogFragment extends Fragment {
 
                             for(int i=0; i<booksArray.length(); i++){
                                 String titleObj = booksArray.getJSONObject(i).getString("title");
-                                JSONArray isbnArray = booksArray.getJSONObject(i).getJSONArray("isbn");
-                                String image = "";
-
-                                if(isbnArray != booksArray.getJSONObject(i).getJSONArray("isbn")){
-                                    Log.d("NOTHING","nothing");
-                                }else{
-                                    image = isbnArray.getString(0);
-                                }
-
-                                Log.d("ISBN", image);
-                                Log.d("ISBN_index", "" + i);
+//                                JSONArray isbnArray = booksArray.getJSONObject(i).getJSONArray("isbn");
+//                                String image = "";
+//                                image = isbnArray.getString(0);
+//
+//                                Log.d("ISBN", image);
+//                                Log.d("ISBN_index", "" + i);
                                 books.add(new Book(titleObj, "author goes here", "description goes heredescription goes heredescription goes heredescription goes heredescription goes here", R.drawable.side_nav_bar, 0.0));
                             }
 
