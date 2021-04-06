@@ -22,11 +22,13 @@ public class PublisherFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String NAME = "name"; // the name of the publisher
     private static final String IMAGE = "image"; // their image
+    private static final String DESCRIPTION = "description"; // their image
     private static final String URL = "url"; // their website url
 
     // types of parameters
     private String name;
     private int image;
+    private String description;
     private String url;
 
     /**
@@ -37,13 +39,14 @@ public class PublisherFragment extends Fragment {
      * @param url publisher url
      * @return A new instance of fragment
      */
-    public static PublisherFragment newInstance( String name, int image, String url) {
+    public static PublisherFragment newInstance( String name, int image, String description, String url) {
         PublisherFragment fragment = new PublisherFragment();
 
         //transfers publisher info to the bundle, where the parameters are the keys
         Bundle args = new Bundle();
         args.putString(NAME, name);
         args.putInt(IMAGE, image);
+        args.putString(DESCRIPTION, description);
         args.putString(URL, url);
         fragment.setArguments(args);
         return fragment;
@@ -58,6 +61,7 @@ public class PublisherFragment extends Fragment {
             //we retrieve it
             name = getArguments().getString(NAME);
             image = getArguments().getInt(IMAGE);
+            description = getArguments().getString(DESCRIPTION);
             url = getArguments().getString(URL);
         }
     }
@@ -73,6 +77,9 @@ public class PublisherFragment extends Fragment {
 
         }
         if(image != 0){
+
+        }
+        if(description != null){
 
         }
         if(url != null){
