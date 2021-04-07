@@ -13,6 +13,7 @@
     <dimen name="welcome_margin">20dp</dimen>
     <dimen name="welcomeText_margin">40dp</dimen>
     <dimen name="welcome_textSize">14sp</dimen>
+    <dimen name="publisher_titleSize">40sp</dimen>
     <dimen name="line_spacing">5dp</dimen>
 
 </resources>
