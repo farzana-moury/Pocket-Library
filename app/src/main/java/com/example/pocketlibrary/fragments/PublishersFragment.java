@@ -32,7 +32,7 @@ public class PublishersFragment extends Fragment {
         CustomViewPager2Adapter adapter = new CustomViewPager2Adapter(getActivity()); //making the adapter our custom adapter
         ViewPager2 viewPager = view.findViewById(R.id.publishers); //finding our viewpager
         viewPager.setAdapter(adapter); //setting the adapter for the viewpager
-
+        viewPager.setPageTransformer(new ZoomOutPageTransformer());
         return view;
     }
 
@@ -70,6 +70,39 @@ public class PublishersFragment extends Fragment {
         @Override
         public int getItemCount() {
             return 5;
+        }
+    }
+
+    public class ZoomOutPageTransformer implements ViewPager2.PageTransformer {
+        private static final float MIN_SCALE = 0.85f;
+
+        public void transformPage(View view, float position) {
+            int pageWidth = view.getWidth();
+            int pageHeight = view.getHeight();
+
+            if (position < -1) { // [-Infinity,-1)
+                // This page is way off-screen to the left.
+                view.setAlpha(0f);
+
+            } else if (position <= 1) { // [-1,1]
+                // Modify the default slide transition to shrink the page as well
+                float scaleFactor = Math.max(MIN_SCALE, 1 - Math.abs(position));
+                float vertMargin = pageHeight * (1 - scaleFactor) / 2;
+                float horzMargin = pageWidth * (1 - scaleFactor) / 2;
+                if (position < 0) {
+                    view.setTranslationX(horzMargin - vertMargin / 2);
+                } else {
+                    view.setTranslationX(-horzMargin + vertMargin / 2);
+                }
+
+                // Scale the page down (between MIN_SCALE and 1)
+                view.setScaleX(scaleFactor);
+                view.setScaleY(scaleFactor);
+
+            } else { // (1,+Infinity]
+                // This page is way off-screen to the right.
+                view.setAlpha(0f);
+            }
         }
     }
 }
