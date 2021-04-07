@@ -37,7 +37,7 @@ public class PublishersFragment extends Fragment {
     }
 
     /**
-     * Customn ViewPager2 adapter
+     * Custom ViewPager2 adapter
      *
      * @author Farzana Moury
      * @since April 6 2021
@@ -73,8 +73,15 @@ public class PublishersFragment extends Fragment {
         }
     }
 
+    /**
+     * Zoom Out Page Transformer - allows a nice transition between publishers
+     *
+     * @author Farzana Moury
+     * @since April 7 2021
+     * @version 1.0
+     */
     public class ZoomOutPageTransformer implements ViewPager2.PageTransformer {
-        private static final float MIN_SCALE = 0.85f;
+        private static final float MIN_SCALE = 0.55f;
 
         public void transformPage(View view, float position) {
             int pageWidth = view.getWidth();

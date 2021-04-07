@@ -53,6 +53,7 @@ public class CatalogFragment extends Fragment {
 
         ArrayList<Book> books = new ArrayList<>(); //the list of books
 
+        //TODO: Be able to take string from the search bar and append to the url...otherwise display "no search results"
         String url = "https://openlibrary.org/search.json?author=dr.seuss";
         String coverUrl;
 
