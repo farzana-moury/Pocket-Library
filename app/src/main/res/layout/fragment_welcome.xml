@@ -3,13 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:background="@color/plum_purple"
     tools:context=".fragments.WelcomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:layout_margin="@dimen/welcome_margin"
         android:gravity="center"
         android:orientation="vertical">
@@ -43,7 +45,7 @@
             android:text="@string/welcome_desc"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:textColor="@color/color_on_primary"
+            android:textColor="@color/white"
             android:textSize="@dimen/welcome_textSize" />
     </LinearLayout>
 </ScrollView>
