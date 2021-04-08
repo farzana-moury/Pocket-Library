@@ -68,13 +68,18 @@ public class CatalogFragment extends Fragment {
                             for(int i=0; i<booksArray.length(); i++){
                                 String titleObj = booksArray.getJSONObject(i).getString("title");
                                 //TODO: Fix API Functionality - display author, description, rating and book cover
-//                                JSONArray isbnArray = booksArray.getJSONObject(i).getJSONArray("isbn");
-//                                String image = "";
-//                                image = isbnArray.getString(0);
-//
-//                                Log.d("ISBN", image);
-//                                Log.d("ISBN_index", "" + i);
-                                books.add(new Book(titleObj, "author goes here", "description goes heredescription goes heredescription goes heredescription goes heredescription goes here", R.drawable.side_nav_bar, 0.0));
+                                try {
+                                    JSONArray isbnArray = booksArray.getJSONObject(i).getJSONArray("isbn");
+                                    String image = "";
+                                    image = isbnArray.getString(0);
+
+                                    Log.d("ISBN", image);
+                                    Log.d("ISBN_index", "" + i);
+                                    books.add(new Book(titleObj, "author goes here", "description goes heredescription goes heredescription goes heredescription goes heredescription goes here", "http://covers.openlibrary.org/b/isbn/" + image + "-M.jpg", 0.0));
+                                    Log.d("URL", "http://covers.openlibrary.org/b/isbn/" + image + "-M.jpg");
+                                }catch(JSONException e){
+                                    books.add(new Book(titleObj, "author goes here", "description goes heredescription goes heredescription goes heredescription goes heredescription goes here", "", 0.0));
+                                }
                             }
 
                             adapter = new BookAdapter(books, getContext());

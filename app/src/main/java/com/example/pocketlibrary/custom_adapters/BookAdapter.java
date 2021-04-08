@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pocketlibrary.R;
 import com.example.pocketlibrary.pojo.Book;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -58,7 +59,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
         holder.title.setText(book.getTitle());
         holder.author.setText(book.getAuthor());
         holder.description.setText(book.getDescription());
-        holder.cover.setImageResource(book.getCover());
+
+        if(!book.getCover().equals("")){
+            Picasso.get().load(book.getCover()).placeholder(R.drawable.side_nav_bar).into(holder.cover);
+        }
+
         holder.rating.setText(String.format("%s", book.getRating()));
     }
 

@@ -15,11 +15,11 @@ public class Book implements Parcelable {
     private String title;
     private String author;
     private String description;
-    private int cover;
+    private String cover;
     private double rating;
 
     //constructor
-    public Book(String title, String author, String description, int cover, double rating) {
+    public Book(String title, String author, String description, String cover, double rating) {
         this.title = title;
         this.author = author;
         this.description = description;
@@ -49,10 +49,10 @@ public class Book implements Parcelable {
         this.description = description;
     }
 
-    public int getCover() {
+    public String getCover() {
         return cover;
     }
-    public void setCover(int cover) {
+    public void setCover(String cover) {
         this.cover = cover;
     }
 
@@ -68,7 +68,7 @@ public class Book implements Parcelable {
         this.title = in.readString();
         this.author = in.readString();
         this.description = in.readString();
-        this.cover = in.readInt();
+        this.cover = in.readString();
         this.rating = in.readDouble();
     }
 
