@@ -12,6 +12,7 @@
     <string name="menu_books">My books</string>
     <string name="menu_welcome">Welcome</string>
     <string name="menu_credits">Credits</string>
+    <string name="text_placeholder">TextView</string>
 
     <!--  Welcome fragment strings  -->
     <string name="welcome">Welcome!</string>
@@ -20,4 +21,9 @@
         different genres for all ages. From children stories to autobiographies, explore the world of knowledge and
         imagination — found within your pocket.
     </string>
+    <string name="cover_desc">book cover image</string>
+
+    <!--  Publisher fragment strings  -->
+    <string name="button">Visit Website</string>
+    <string name="img_desc">publisher company image</string>
 </resources>

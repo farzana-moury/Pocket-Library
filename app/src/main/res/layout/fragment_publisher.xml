@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.PublisherFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/logo_margin"
+            android:layout_marginRight="@dimen/logo_margin"
+            android:fontFamily="@font/days_one"
+            android:text="@string/text_placeholder"
+            android:textAlignment="center"
+            android:textColor="@color/plum_purple"
+            android:textSize="@dimen/publisher_titleSize" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/nav_header_height"
+            android:layout_height="@dimen/logo_dimenSize"
+            android:layout_marginTop="@dimen/welcome_titleSize"
+            android:layout_marginBottom="@dimen/welcome_titleSize"
+            android:src="@drawable/side_nav_bar"
+            android:contentDescription="@string/img_desc" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/logo_margin"
+            android:layout_marginRight="@dimen/logo_margin"
+            android:layout_marginBottom="@dimen/logo_margin"
+            android:fontFamily="sans-serif"
+            android:text="@string/text_placeholder"
+            android:textAlignment="center"
+            android:textColor="@color/secondary_variant"
+            android:textSize="@dimen/welcome_textSize" />
+
+        <Button
+            android:id="@+id/urlButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primary_variant"
+            android:text="@string/button"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</ScrollView>

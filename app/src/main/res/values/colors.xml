@@ -7,5 +7,6 @@
     <color name="color_on_primary">#3B3B58</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="red">#D34D4D</color>
+    <color name="red">#EF4242</color>
+    <color name="plum_purple">#423161</color>
 </resources>
