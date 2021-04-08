@@ -27,6 +27,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Catalog Fragment - contains a collection of books
@@ -40,6 +41,10 @@ public class CatalogFragment extends Fragment {
     public static BookAdapter adapter;
     public static RecyclerView recyclerView;
     public static String url;
+    public static String title;
+    public static String image;
+    public static String authors;
+    public static String description;
 
     /**
      *
@@ -56,7 +61,7 @@ public class CatalogFragment extends Fragment {
 
         ArrayList<Book> books = new ArrayList<>(); //the list of books
 
-        //TODO: Be able to take string from the search bar and append to the url...otherwise display "no search results"
+        //TODO: If you have time near the end, find out how to filter searches by author AND book title
 
         SearchView searchView = view.findViewById(R.id.search_bar);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -67,7 +72,6 @@ public class CatalogFragment extends Fragment {
                 books.clear();
 
                 url = "https://openlibrary.org/search.json?author=" + query.replace(" ", "%20");
-                Log.d("URL", url);
 
                 //Make a request
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -78,17 +82,30 @@ public class CatalogFragment extends Fragment {
                                     JSONArray booksArray =  response.getJSONArray("docs");
 
                                     for(int i=0; i<booksArray.length(); i++){
-                                        String titleObj = booksArray.getJSONObject(i).getString("title");
-                                        //TODO: Fix API Functionality - display author, description, rating and book cover
+                                        title = booksArray.getJSONObject(i).getString("title");
+
                                         try {
                                             JSONArray isbnArray = booksArray.getJSONObject(i).getJSONArray("isbn");
-                                            String image = "";
-                                            image = isbnArray.getString(0);
-
-                                            books.add(new Book(titleObj, "author goes here", "description goes heredescription goes heredescription goes heredescription goes heredescription goes here", "http://covers.openlibrary.org/b/isbn/" + image + "-M.jpg", 0.0));
+                                            image = isbnArray.getString(1);
                                         }catch(JSONException e){
-                                            books.add(new Book(titleObj, "author goes here", "description goes heredescription goes heredescription goes heredescription goes heredescription goes here", "", 0.0));
+                                            image = "";
                                         }
+
+                                        try{
+                                            JSONArray authorArray = booksArray.getJSONObject(i).getJSONArray("author_name");
+                                            authors = authorArray.get(0).toString();
+                                        }catch(JSONException e){
+                                            authors = "No author provided";
+                                        }
+
+                                        try{
+                                            JSONArray descArray = booksArray.getJSONObject(i).getJSONArray("first_sentence");
+                                            description = descArray.getString(0);
+                                        }catch(JSONException e){
+                                            description = "No description provided";
+                                        }
+
+                                        books.add(new Book(title, authors, description, "http://covers.openlibrary.org/b/isbn/" + image + "-M.jpg", 0.0));
                                     }
 
                                     adapter = new BookAdapter(books, getContext());
