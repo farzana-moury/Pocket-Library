@@ -88,7 +88,7 @@ public class PublisherFragment extends Fragment {
         }
         if(description != null){
             TextView publisherDesc = view.findViewById(R.id.description);
-            publisherDesc.setText(name);
+            publisherDesc.setText(description);
         }
 
         Button urlButton = view.findViewById(R.id.urlButton);
