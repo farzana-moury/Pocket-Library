@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -25,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Catalog Fragment - contains a collection of books
@@ -37,6 +39,7 @@ public class CatalogFragment extends Fragment {
     //static properties that can be accessed throughout classes
     public static BookAdapter adapter;
     public static RecyclerView recyclerView;
+    public static String url;
 
     /**
      *
@@ -54,53 +57,67 @@ public class CatalogFragment extends Fragment {
         ArrayList<Book> books = new ArrayList<>(); //the list of books
 
         //TODO: Be able to take string from the search bar and append to the url...otherwise display "no search results"
-        String url = "https://openlibrary.org/search.json?author=dr.seuss";
-        String coverUrl;
+
+        SearchView searchView = view.findViewById(R.id.search_bar);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                //the action performed when user makes a search
+
+                books.clear();
+
+                url = "https://openlibrary.org/search.json?author=" + query.replace(" ", "%20");
+                Log.d("URL", url);
 
                 //Make a request
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            JSONArray booksArray =  response.getJSONArray("docs");
-
-                            for(int i=0; i<booksArray.length(); i++){
-                                String titleObj = booksArray.getJSONObject(i).getString("title");
-                                //TODO: Fix API Functionality - display author, description, rating and book cover
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
                                 try {
-                                    JSONArray isbnArray = booksArray.getJSONObject(i).getJSONArray("isbn");
-                                    String image = "";
-                                    image = isbnArray.getString(0);
+                                    JSONArray booksArray =  response.getJSONArray("docs");
 
-                                    Log.d("ISBN", image);
-                                    Log.d("ISBN_index", "" + i);
-                                    books.add(new Book(titleObj, "author goes here", "description goes heredescription goes heredescription goes heredescription goes heredescription goes here", "http://covers.openlibrary.org/b/isbn/" + image + "-M.jpg", 0.0));
-                                }catch(JSONException e){
-                                    books.add(new Book(titleObj, "author goes here", "description goes heredescription goes heredescription goes heredescription goes heredescription goes here", "", 0.0));
+                                    for(int i=0; i<booksArray.length(); i++){
+                                        String titleObj = booksArray.getJSONObject(i).getString("title");
+                                        //TODO: Fix API Functionality - display author, description, rating and book cover
+                                        try {
+                                            JSONArray isbnArray = booksArray.getJSONObject(i).getJSONArray("isbn");
+                                            String image = "";
+                                            image = isbnArray.getString(0);
+
+                                            books.add(new Book(titleObj, "author goes here", "description goes heredescription goes heredescription goes heredescription goes heredescription goes here", "http://covers.openlibrary.org/b/isbn/" + image + "-M.jpg", 0.0));
+                                        }catch(JSONException e){
+                                            books.add(new Book(titleObj, "author goes here", "description goes heredescription goes heredescription goes heredescription goes heredescription goes here", "", 0.0));
+                                        }
+                                    }
+
+                                    adapter = new BookAdapter(books, getContext());
+                                    recyclerView = view.findViewById(R.id.bookRecyclerView);
+                                    recyclerView.setAdapter(adapter);
+                                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
                                 }
                             }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.d("VOLLEY_ERROR", error.getLocalizedMessage());
+                            }
+                        });
 
-                            adapter = new BookAdapter(books, getContext());
-                            recyclerView = view.findViewById(R.id.bookRecyclerView);
-                            recyclerView.setAdapter(adapter);
-                            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                BookSingleton.getInstance(getContext()).getRequestQueue().add(request);
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("VOLLEY_ERROR", error.getLocalizedMessage());
-                    }
-                });
+                return false;
+            }
 
-        BookSingleton.getInstance(getContext()).getRequestQueue().add(request);
-
-
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
         return view;
     }
