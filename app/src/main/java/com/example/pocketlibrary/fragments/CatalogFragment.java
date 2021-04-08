@@ -76,7 +76,6 @@ public class CatalogFragment extends Fragment {
                                     Log.d("ISBN", image);
                                     Log.d("ISBN_index", "" + i);
                                     books.add(new Book(titleObj, "author goes here", "description goes heredescription goes heredescription goes heredescription goes heredescription goes here", "http://covers.openlibrary.org/b/isbn/" + image + "-M.jpg", 0.0));
-                                    Log.d("URL", "http://covers.openlibrary.org/b/isbn/" + image + "-M.jpg");
                                 }catch(JSONException e){
                                     books.add(new Book(titleObj, "author goes here", "description goes heredescription goes heredescription goes heredescription goes heredescription goes here", "", 0.0));
                                 }
