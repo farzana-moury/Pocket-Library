@@ -1,5 +1,6 @@
 package com.example.pocketlibrary.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -38,6 +39,7 @@ import java.util.Random;
  */
 public class CatalogFragment extends Fragment {
     //static properties that can be accessed throughout classes
+    @SuppressLint("StaticFieldLeak")
     public static BookAdapter adapter;
     public static RecyclerView recyclerView;
     public static String url;
