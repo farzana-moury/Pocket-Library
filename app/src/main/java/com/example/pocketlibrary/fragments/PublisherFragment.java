@@ -85,6 +85,7 @@ public class PublisherFragment extends Fragment {
         }
         if(image != 0){
             ImageView publisherImage = view.findViewById(R.id.image);
+            publisherImage.setImageResource(image);
         }
         if(description != null){
             TextView publisherDesc = view.findViewById(R.id.description);

@@ -15,7 +15,7 @@
     <dimen name="welcome_textSize">14sp</dimen>
 
     <!--  Publishers pages dimensions  -->
-    <dimen name="publisher_titleSize">40sp</dimen>
+    <dimen name="publisher_titleSize">35sp</dimen>
 
 
     <!--  Catalog page dimensions  -->
