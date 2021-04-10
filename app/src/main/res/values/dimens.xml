@@ -13,7 +13,22 @@
     <dimen name="welcome_margin">20dp</dimen>
     <dimen name="welcomeText_margin">40dp</dimen>
     <dimen name="welcome_textSize">14sp</dimen>
+
+    <!--  Publishers pages dimensions  -->
     <dimen name="publisher_titleSize">40sp</dimen>
+
+
+    <!--  Catalog page dimensions  -->
+    <dimen name="catalog_size1">15dp</dimen>
+    <dimen name="catalog_size2">130dp</dimen>
+    <dimen name="catalog_size3">200dp</dimen>
+    <dimen name="catalog_margin">10dp</dimen>
+    <dimen name="catalog_margin2">13dp</dimen>
+    <dimen name="catalog_text1">18sp</dimen>
+    <dimen name="catalog_text2">16sp</dimen>
     <dimen name="line_spacing">5dp</dimen>
+    <dimen name="letterspacing">0.07</dimen>
+    <dimen name="starspacing">2dp</dimen>
+    <dimen name="starmargin">22dp</dimen>
 
 </resources>

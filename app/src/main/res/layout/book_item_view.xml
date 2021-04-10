@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="10dp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintHorizontal_bias="@fraction/catalog_bias2"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="1.0"
-    android:layout_margin="10dp">
+    app:layout_constraintVertical_bias="@fraction/catalog_bias1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,10 +18,10 @@
 
         <ImageView
             android:id="@+id/bookCover"
-            android:layout_width="130dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="@dimen/catalog_size2"
+            android:layout_height="@dimen/catalog_size3"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/welcome_margin"
             android:backgroundTint="@color/primary_variant"
             android:contentDescription="@string/cover_desc"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,15 +30,15 @@
 
         <TextView
             android:id="@+id/bookTitle"
-            android:layout_width="200dp"
+            android:layout_width="@dimen/catalog_size3"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="@dimen/catalog_margin"
+            android:layout_marginTop="@dimen/logo_margin"
+            android:layout_marginEnd="@dimen/catalog_margin"
             android:fontFamily="@font/days_one"
-            android:text="TextView"
+            android:text="@string/text_placeholder"
             android:textColor="@color/plum_purple"
-            android:textSize="18sp"
+            android:textSize="@dimen/catalog_text1"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/bookCover"
@@ -47,59 +46,91 @@
 
         <TextView
             android:id="@+id/bookAuthor"
-            android:layout_width="200dp"
+            android:layout_width="@dimen/catalog_size3"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="@dimen/catalog_margin"
+            android:layout_marginTop="@dimen/catalog_margin"
+            android:layout_marginEnd="@dimen/catalog_margin"
             android:fontFamily="@font/days_one"
-            android:text="TextView"
+            android:text="@string/text_placeholder"
             android:textColor="@color/primary"
-            android:textSize="16sp"
+            android:textSize="@dimen/catalog_text2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/bookCover"
             app:layout_constraintTop_toBottomOf="@+id/bookTitle" />
 
         <TextView
             android:id="@+id/bookDesc"
-            android:layout_width="200dp"
+            android:layout_width="@dimen/catalog_size3"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="60dp"
-            android:text="TextView"
+            android:layout_marginStart="@dimen/catalog_margin"
+            android:layout_marginTop="@dimen/catalog_margin2"
+            android:layout_marginEnd="@dimen/catalog_margin"
+            android:layout_marginBottom="@dimen/welcome_margin"
+            android:text="@string/text_placeholder"
             android:textColor="@color/primary_variant"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/bookRating"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/bookCover"
             app:layout_constraintTop_toBottomOf="@+id/bookAuthor"
-            app:layout_constraintVertical_bias="0.069" />
+            app:layout_constraintVertical_bias="@fraction/catalog_bias2" />
 
         <TextView
             android:id="@+id/bookRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            android:text="TextView"
+            android:layout_marginEnd="@dimen/welcome_margin"
+            android:layout_marginBottom="@dimen/welcome_margin"
+            android:letterSpacing="@dimen/letterspacing"
+            android:text="@string/ratings"
+            android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
             android:id="@+id/button"
-            android:layout_width="130dp"
+            android:layout_width="@dimen/catalog_size2"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="@color/secondary"
-            android:text="Borrow"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/catalog_size1"
+            android:layout_marginBottom="@dimen/welcome_margin"
+            android:backgroundTint="@color/primary_variant"
+            android:text="@string/borrow"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bookCover"
-            app:layout_constraintVertical_bias="0.117" />
+            app:layout_constraintVertical_bias="@fraction/catalog_bias2" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="@dimen/catalog_size1"
+            android:layout_height="@dimen/catalog_size1"
+            android:layout_marginEnd="@dimen/catalog_margin"
+            android:layout_marginBottom="@dimen/starmargin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bookRating"
+            app:srcCompat="@drawable/ic_baseline_star_24" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="@dimen/catalog_size1"
+            android:layout_height="@dimen/catalog_size1"
+            android:layout_marginEnd="@dimen/starspacing"
+            android:layout_marginBottom="@dimen/starmargin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:srcCompat="@drawable/ic_baseline_star_24" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="@dimen/catalog_size1"
+            android:layout_height="@dimen/catalog_size1"
+            android:layout_marginEnd="@dimen/starspacing"
+            android:layout_marginBottom="@dimen/starmargin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView3"
+            app:srcCompat="@drawable/ic_baseline_star_24" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

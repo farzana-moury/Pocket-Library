@@ -26,4 +26,8 @@
     <!--  Publisher fragment strings  -->
     <string name="button">Visit Website</string>
     <string name="img_desc">publisher company image</string>
+
+    <!--  Catalog fragment strings  -->
+    <string name="ratings">No Ratings</string>
+    <string name="borrow">Borrow</string>
 </resources>

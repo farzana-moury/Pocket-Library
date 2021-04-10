@@ -73,7 +73,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
             holder.cover.setImageResource(R.drawable.side_nav_bar);
         }
 
-        holder.rating.setText(String.format("%s", book.getRating()));
+//        holder.rating.setText(String.format("%s", book.getRating()));
     }
 
     /**
@@ -96,7 +96,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
         protected TextView author;
         protected TextView description;
         protected ImageView cover;
-        protected TextView rating;
+//        protected TextView rating;
 
         /**
          * @param itemView itemView
@@ -107,7 +107,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
             this.author = itemView.findViewById(R.id.bookAuthor);
             this.description = itemView.findViewById(R.id.bookDesc);
             this.cover = itemView.findViewById(R.id.bookCover);
-            this.rating = itemView.findViewById(R.id.bookRating);
+//            this.rating = itemView.findViewById(R.id.bookRating);
         }
     }
 }
