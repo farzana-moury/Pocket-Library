@@ -4,23 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/side_nav_bar2"
     tools:context=".fragments.CreditsFragment">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:foregroundGravity="center"
         android:gravity="center"
         android:orientation="vertical">
 
 
         <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/imageView13"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/catalog_size3"
             android:layout_marginTop="@dimen/welcome_titleSize"
-            tools:src="@tools:sample/avatars" />
+            android:src="@drawable/creator_pic" />
 
         <TextView
             android:id="@+id/textView2"
@@ -28,8 +29,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/logo_margin"
             android:layout_marginBottom="@dimen/logo_margin"
-            android:text="TextView"
-            android:textAlignment="center" />
+            android:fontFamily="@font/days_one"
+            android:letterSpacing="@dimen/letterspacing"
+            android:text="Developed by Farzana Moury"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,29 +45,29 @@
 
             <ImageView
                 android:id="@+id/imageView9"
-                android:layout_width="@dimen/logo_margin"
-                android:layout_height="@dimen/logo_margin"
+                android:layout_width="@dimen/welcome_titleSize"
+                android:layout_height="@dimen/welcome_titleSize"
                 android:layout_marginRight="@dimen/logo_margin"
                 android:src="@drawable/side_nav_bar" />
 
             <ImageView
                 android:id="@+id/imageView10"
-                android:layout_width="@dimen/logo_margin"
-                android:layout_height="@dimen/logo_margin"
+                android:layout_width="@dimen/welcome_titleSize"
+                android:layout_height="@dimen/welcome_titleSize"
                 android:layout_marginRight="@dimen/logo_margin"
                 android:src="@drawable/side_nav_bar" />
 
             <ImageView
                 android:id="@+id/imageView11"
-                android:layout_width="@dimen/logo_margin"
-                android:layout_height="@dimen/logo_margin"
+                android:layout_width="@dimen/welcome_titleSize"
+                android:layout_height="@dimen/welcome_titleSize"
                 android:layout_marginRight="@dimen/logo_margin"
                 android:src="@drawable/side_nav_bar" />
 
             <ImageView
                 android:id="@+id/imageView12"
-                android:layout_width="@dimen/logo_margin"
-                android:layout_height="@dimen/logo_margin"
+                android:layout_width="@dimen/welcome_titleSize"
+                android:layout_height="@dimen/welcome_titleSize"
                 android:src="@drawable/side_nav_bar" />
         </LinearLayout>
 
