@@ -30,4 +30,19 @@
     <!--  Catalog fragment strings  -->
     <string name="ratings">No Ratings</string>
     <string name="borrow">Borrow</string>
+
+
+    <!--  Credits fragment strings  -->
+    <string name="information">Wikipedia.org</string>
+    <string name="images1">Color Scheme and Logo</string>
+    <string name="images2">Coolors.co</string>
+    <string name="images3">Canva.com</string>
+
+    <string name="images4">Publisher Logos</string>
+    <string name="images5">https://thebookactivist.files.wordpress.com/2017/04/scholastic-logo-b316f651.png </string>
+    <string name="images6">https://thebookactivist.files.wordpress.com/2017/04/scholastic-logo-b316f651.png </string>
+    <string name="images7">https://thebookactivist.files.wordpress.com/2017/04/scholastic-logo-b316f651.png </string>
+    <string name="images8">https://thebookactivist.files.wordpress.com/2017/04/scholastic-logo-b316f651.png </string>
+
+
 </resources>

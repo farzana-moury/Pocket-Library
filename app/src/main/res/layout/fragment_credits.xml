@@ -48,27 +48,27 @@
                 android:layout_width="@dimen/welcome_titleSize"
                 android:layout_height="@dimen/welcome_titleSize"
                 android:layout_marginRight="@dimen/logo_margin"
-                android:src="@drawable/side_nav_bar" />
+                android:src="@drawable/ic_baseline_email_24" />
 
             <ImageView
                 android:id="@+id/imageView10"
                 android:layout_width="@dimen/welcome_titleSize"
                 android:layout_height="@dimen/welcome_titleSize"
                 android:layout_marginRight="@dimen/logo_margin"
-                android:src="@drawable/side_nav_bar" />
+                android:src="@drawable/ic_baseline_call_24" />
 
             <ImageView
                 android:id="@+id/imageView11"
                 android:layout_width="@dimen/welcome_titleSize"
                 android:layout_height="@dimen/welcome_titleSize"
                 android:layout_marginRight="@dimen/logo_margin"
-                android:src="@drawable/side_nav_bar" />
+                android:src="@drawable/ic_baseline_textsms_24" />
 
             <ImageView
                 android:id="@+id/imageView12"
                 android:layout_width="@dimen/welcome_titleSize"
                 android:layout_height="@dimen/welcome_titleSize"
-                android:src="@drawable/side_nav_bar" />
+                android:src="@drawable/linkedin_logo" />
         </LinearLayout>
 
         <TextView
@@ -84,7 +84,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/information"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/welcome_titleSize"
@@ -107,7 +107,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/images"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/welcome_titleSize"
@@ -130,7 +130,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/api"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/welcome_titleSize"
