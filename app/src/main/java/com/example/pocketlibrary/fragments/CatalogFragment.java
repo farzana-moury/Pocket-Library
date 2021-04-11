@@ -19,7 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.pocketlibrary.API.BookSingleton;
 import com.example.pocketlibrary.R;
-import com.example.pocketlibrary.custom_adapters.BookAdapter;
+import com.example.pocketlibrary.adapters.BookAdapter;
 import com.example.pocketlibrary.pojo.Book;
 
 import org.json.JSONArray;
@@ -27,8 +27,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
 
 /**
  * Catalog Fragment - contains a collection of books

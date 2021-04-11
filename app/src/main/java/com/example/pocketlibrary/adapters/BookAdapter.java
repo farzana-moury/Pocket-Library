@@ -1,4 +1,4 @@
-package com.example.pocketlibrary.custom_adapters;
+package com.example.pocketlibrary.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
