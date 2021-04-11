@@ -70,7 +70,7 @@ public class BookDatabase extends SQLiteOpenHelper {
         values.put(COLUMN_AUTHOR, book.getAuthor());
         values.put(COLUMN_DESC, book.getDescription());
         values.put(COLUMN_COVER, book.getCover());
-        values.put(COLUMN_RATING, book.getDescription());
+        values.put(COLUMN_RATING, "" + book.getRating());
 
         db.insert(TABLE_BOOKS, null, values); //inserting the values into the table
 
@@ -107,5 +107,44 @@ public class BookDatabase extends SQLiteOpenHelper {
         db.close();
         return book; //return the book object to be read from the table
     }
+
+    /**
+     * update method
+     */
+    public int updateBook(Book book){
+        SQLiteDatabase db = getWritableDatabase(); //opening the database
+
+        //content values (an associative array with name value pairs)
+        ContentValues values = new ContentValues();
+
+        //storing the values into the array
+        values.put(COLUMN_TITLE, book.getTitle());
+        values.put(COLUMN_AUTHOR, book.getAuthor());
+        values.put(COLUMN_DESC, book.getDescription());
+        values.put(COLUMN_COVER, book.getCover());
+        values.put(COLUMN_RATING, "" + book.getRating());
+
+        //using the update query to store the updated the information into the table
+        return db.update(TABLE_BOOKS, values, COLUMN_ID + "=?",
+                new String[]{String.valueOf(book.getId())});
+    }
+
+    /**
+     * delete method
+     */
+    public void deleteBook(int id){ //deletes by given id
+        SQLiteDatabase db = this.getReadableDatabase(); //opening the database
+
+        //query that will allow us to delete a record according to its id
+        String deleteQuery = "DELETE FROM " + TABLE_BOOKS + " WHERE " + COLUMN_ID + " = " + id;
+
+        //executing the query
+        db.execSQL(deleteQuery);
+
+        db.close(); //closing the database
+    }
+
+
+
 }
 
