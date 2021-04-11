@@ -22,6 +22,7 @@
         imagination — found within your pocket.
     </string>
     <string name="cover_desc">book cover image</string>
+    <string name="location">Visit Us!</string>
 
     <!--  Publisher fragment strings  -->
     <string name="button">Visit Website</string>
