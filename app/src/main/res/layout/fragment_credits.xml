@@ -19,12 +19,15 @@
             android:id="@+id/imageView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/welcome_titleSize"
             tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/logo_margin"
+            android:layout_marginBottom="@dimen/logo_margin"
             android:text="TextView"
             android:textAlignment="center" />
 
@@ -66,6 +69,8 @@
             android:id="@+id/Information"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/logo_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:text="Information"
             android:textAlignment="center"
             android:textStyle="bold" />
@@ -81,6 +86,8 @@
             android:id="@+id/Images"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/logo_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:text="Images"
             android:textAlignment="center"
             android:textStyle="bold" />
@@ -96,6 +103,8 @@
             android:id="@+id/API"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/logo_margin"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:text="API"
             android:textAlignment="center"
             android:textStyle="bold" />
@@ -104,6 +113,7 @@
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/welcome_titleSize"
             android:text="TextView"
             android:textAlignment="center" />
     </LinearLayout>
