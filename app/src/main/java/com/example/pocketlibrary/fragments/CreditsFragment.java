@@ -1,6 +1,8 @@
 package com.example.pocketlibrary.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,9 +10,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pocketlibrary.R;
+import com.google.android.material.snackbar.Snackbar;
 
 /**
  * Credits fragment contains credits info and contact info of the creator of this app - me
@@ -50,6 +54,90 @@ public class CreditsFragment extends Fragment {
         //textview containing credits on api used
         TextView apiTextView = view.findViewById(R.id.api);
         apiTextView.setText("Open Library Search API \n\nhttps://openlibrary.org/dev/docs/api/search");
+
+        //common intents
+        ImageView email = view.findViewById(R.id.email); //when email icon is pressed
+        email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] email = {"farzm.business@pocketlibrary.com"};
+
+                // Using common intents to store email data
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:"));
+                intent.putExtra(Intent.EXTRA_EMAIL, email);
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Ask me anything you'd like.");
+
+                // see if there is a software that can resolve this activity
+                if(intent.resolveActivity(getActivity().getPackageManager()) != null){
+                    // as long as it does not equal null, do this task
+                    // display error message here
+                    Snackbar.make(getView(), "No app installed", Snackbar.LENGTH_SHORT).show();
+                }else{
+                    startActivity(intent);
+                }
+            }
+        });
+
+        ImageView phone = view.findViewById(R.id.phone); //when phone icon is pressed
+        phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // using common intents to store phone data
+                Uri phoneNumber = Uri.parse("tel:1112223345");
+
+                Intent intent = new Intent(Intent.ACTION_DIAL, phoneNumber);
+
+                // see if there is a software that can resolve this activity
+                if(intent.resolveActivity(getActivity().getPackageManager()) != null){
+                    // as long as it does not equal null, do this task
+                    // display error message here
+                    Snackbar.make(getView(), "No app installed", Snackbar.LENGTH_SHORT).show();
+                }else{
+                    startActivity(intent);
+                }
+            }
+        });
+
+        ImageView text = view.findViewById(R.id.textMe); //when text icon is pressed
+        text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // using common intents to store text data
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("smsto:1112223345"));
+                intent.putExtra("sms_body", "Hi, I'd like to contact you on behalf of");
+
+                // see if there is a software that can resolve this activity
+                if(intent.resolveActivity(getActivity().getPackageManager()) != null){
+                    // as long as it does not equal null, do this task
+                    // display error message here
+                    Snackbar.make(getView(), "No app installed", Snackbar.LENGTH_SHORT).show();
+                }else{
+                    startActivity(intent);
+                }
+            }
+        });
+
+        ImageView linkedIn = view.findViewById(R.id.linked_in); //when linkedIn icon is pressed
+        linkedIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // using common intents to store web data
+                Uri linkedIn = Uri.parse("https://www.linkedin.com/in/farzana-moury-35b4121b3/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, linkedIn);
+
+                // see if there is a software that can resolve this activity
+                if(intent.resolveActivity(getActivity().getPackageManager()) != null){
+                    // as long as it does not equal null, do this task
+                    // display error message here
+                    Snackbar.make(getView(), "No app installed", Snackbar.LENGTH_SHORT).show();
+                }else{
+                    startActivity(intent);
+                }
+            }
+        });
+
 
         return view;
     }
