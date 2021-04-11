@@ -29,6 +29,11 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
     private ArrayList<Book> books;
     private Context context;
 
+    public static String bookTitle;
+    public static String bookAuthor;
+    public static String bookDescription;
+    public static String book;
+
     //constructor
     public BorrowedBookAdapter(ArrayList<Book> books, Context context){
         this.books = books;

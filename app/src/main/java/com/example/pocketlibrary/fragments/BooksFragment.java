@@ -27,6 +27,9 @@ import java.util.ArrayList;
  */
 public class BooksFragment extends Fragment {
 
+    public static BookDatabase db;
+    public static ArrayList<Book> myBooks = new ArrayList<>();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -36,14 +39,13 @@ public class BooksFragment extends Fragment {
         //setting the recyclerview for this fragment
         RecyclerView myBooksRecyclerView = view.findViewById(R.id.borrowedBookRecyclerView); //containing the books we borrowed
 
-        BookDatabase db = new BookDatabase(getContext()); //setting up the database
+        myBooksRecyclerView.setLayoutManager(new LinearLayoutManager(getContext())); //setting the layout manager
 
-        //grabbing all our books from the database
-        ArrayList<Book> myBooks = db.getAllBooks();
+        db = new BookDatabase(getContext()); //setting up the database
+
+        myBooks = db.getAllBooks(); //retrieving all our books from the database and storing it into the array
 
         db.close(); //closing the database safely
-
-        myBooksRecyclerView.setLayoutManager(new LinearLayoutManager(getContext())); //setting the layout manager
 
         myBooksRecyclerView.setAdapter(new BorrowedBookAdapter(myBooks, getContext())); //setting the adapter
 

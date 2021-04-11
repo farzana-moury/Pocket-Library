@@ -82,7 +82,7 @@ public class BookDatabase extends SQLiteOpenHelper {
 
     /**
      * read method
-     * @return ScheduleItem object (record from the schedule database)
+     * @return Book object (record from the books database)
      */
     public Book readBook(int id){
         SQLiteDatabase db = this.getReadableDatabase(); //reading a record out
@@ -164,9 +164,9 @@ public class BookDatabase extends SQLiteOpenHelper {
                     cursor.getInt(0), //id
                     cursor.getString(1), //book title
                     cursor.getString(2), //book author
-                    cursor.getString(2), //book description
-                    cursor.getString(2), //book cover image
-                    Double.parseDouble(cursor.getString(2)) //book rating
+                    cursor.getString(3), //book description
+                    cursor.getString(4), //book cover image
+                    Double.parseDouble(cursor.getString(5)) //book rating
             ));
         }
         db.close();

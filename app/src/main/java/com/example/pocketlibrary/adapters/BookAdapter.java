@@ -18,6 +18,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import static com.example.pocketlibrary.fragments.BooksFragment.db;
+
 /**
  * Custom adapter class for the book recyclerview
  *
@@ -73,6 +75,17 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
         }else{
             holder.cover.setImageResource(R.drawable.side_nav_bar);
         }
+
+        //when we decide to borrow a book...
+        holder.borrowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //the book is added to the books database, to be shown in the My books fragment
+                db.createBook(new Book(book.getTitle(), book.getAuthor(), book.getDescription(), book.getCover(), book.getRating()));
+            }
+        });
+
+        db.close(); //closing the database safely
 
 //        holder.rating.setText(String.format("%s", book.getRating()));
     }
