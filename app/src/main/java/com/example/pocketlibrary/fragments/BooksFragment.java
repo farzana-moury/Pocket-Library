@@ -27,7 +27,7 @@ import java.util.ArrayList;
  */
 public class BooksFragment extends Fragment {
 
-    public static BookDatabase db;
+    public static BookDatabase db = new BookDatabase(context); //setting up the database
     public static ArrayList<Book> myBooks = new ArrayList<>();
 
     @Override
@@ -40,8 +40,6 @@ public class BooksFragment extends Fragment {
         RecyclerView myBooksRecyclerView = view.findViewById(R.id.borrowedBookRecyclerView); //containing the books we borrowed
 
         myBooksRecyclerView.setLayoutManager(new LinearLayoutManager(getContext())); //setting the layout manager
-
-        db = new BookDatabase(getContext()); //setting up the database
 
         myBooks = db.getAllBooks(); //retrieving all our books from the database and storing it into the array
 
