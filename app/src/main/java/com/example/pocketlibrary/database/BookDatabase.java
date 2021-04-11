@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 
 import com.example.pocketlibrary.pojo.Book;
 
+import java.util.ArrayList;
+
 /**
  * The database class for the My Books fragment - contains the borrowed books from the catalog
  * SQLite is a file based database - a lite database with everything contained in a file rather than a server
@@ -144,7 +146,32 @@ public class BookDatabase extends SQLiteOpenHelper {
         db.close(); //closing the database
     }
 
+    /**
+     * retrieve all records method -- this will allow us to display all of the borrowed inside the "my books" recyclerview (since it requires an arraylist)
+     * @return the list of all borrowed book from the books table
+     */
+    public ArrayList<Book> getAllBooks(){
+        SQLiteDatabase db = this.getReadableDatabase();
 
+        //grabbing everything from the database
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_BOOKS, null);
+
+        //storing the results in an arraylist
+        ArrayList<Book> books = new ArrayList<>();
+        while (cursor.moveToNext()){ //will go next as long as there is a next location within the list
+            books.add(new Book(
+                    //result set (iterator)
+                    cursor.getInt(0), //id
+                    cursor.getString(1), //book title
+                    cursor.getString(2), //book author
+                    cursor.getString(2), //book description
+                    cursor.getString(2), //book cover image
+                    Double.parseDouble(cursor.getString(2)) //book rating
+            ));
+        }
+        db.close();
+        return books;
+    }
 
 }
 
