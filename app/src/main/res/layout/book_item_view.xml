@@ -88,7 +88,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/borrowButton"
             android:layout_width="@dimen/catalog_size2"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/activity_horizontal_margin"

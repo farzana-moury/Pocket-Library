@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -96,6 +97,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
         protected TextView author;
         protected TextView description;
         protected ImageView cover;
+        protected Button borrowButton;
 //        protected TextView rating;
 
         /**
@@ -107,6 +109,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
             this.author = itemView.findViewById(R.id.bookAuthor);
             this.description = itemView.findViewById(R.id.bookDesc);
             this.cover = itemView.findViewById(R.id.bookCover);
+            this.borrowButton = itemView.findViewById(R.id.borrowButton);
 //            this.rating = itemView.findViewById(R.id.bookRating);
         }
     }
