@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pocketlibrary.R;
+import com.example.pocketlibrary.database.BookDatabase;
 import com.example.pocketlibrary.pojo.Book;
 import com.squareup.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
@@ -75,6 +76,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
         }else{
             holder.cover.setImageResource(R.drawable.side_nav_bar);
         }
+
+        db = new BookDatabase(context); //setting up the database
 
         //when we decide to borrow a book...
         holder.borrowButton.setOnClickListener(new View.OnClickListener() {

@@ -1,11 +1,13 @@
 package com.example.pocketlibrary.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,8 @@ import com.example.pocketlibrary.pojo.Book;
 
 import java.util.ArrayList;
 
+//import static com.example.pocketlibrary.adapters.BookAdapter.myBooks;
+
 /**
  * My Books fragment is a screen that contains a recyclerview of books that you've borrowed. These are stored in a
  * SQLite database where basic CRUD operations can be performed (Create, Read, Update, Delete)
@@ -27,7 +31,7 @@ import java.util.ArrayList;
  */
 public class BooksFragment extends Fragment {
 
-    public static BookDatabase db = new BookDatabase(context); //setting up the database
+    public static BookDatabase db;
     public static ArrayList<Book> myBooks = new ArrayList<>();
 
     @Override
@@ -41,7 +45,9 @@ public class BooksFragment extends Fragment {
 
         myBooksRecyclerView.setLayoutManager(new LinearLayoutManager(getContext())); //setting the layout manager
 
-        myBooks = db.getAllBooks(); //retrieving all our books from the database and storing it into the array
+        db = new BookDatabase(getContext()); //setting up the database
+
+        myBooks = db.getAllBooks(); //retrieving all our books from the database and storing it into an array
 
         db.close(); //closing the database safely
 
