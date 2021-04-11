@@ -87,7 +87,7 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
      * Custom viewHolder class
      *
      * @author Farzana Moury
-     * @since April 1st 2021
+     * @since April 11 2021
      * @version 1.0
      */
     static class CustomBorrowedBookViewHolder extends RecyclerView.ViewHolder{
