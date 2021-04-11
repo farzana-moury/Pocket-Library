@@ -73,7 +73,7 @@ public class CatalogFragment extends Fragment {
 
                 books.clear();
 
-                url = "https://openlibrary.org/search.json?author=" + query.replace(" ", "%20");
+                url = "https://openlibrary.org/search.json?title=" + query.replace(" ", "%20");
 
                 //Make a request
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,

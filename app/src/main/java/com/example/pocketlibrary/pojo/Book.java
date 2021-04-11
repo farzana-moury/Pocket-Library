@@ -12,13 +12,14 @@ import android.os.Parcelable;
  */
 public class Book implements Parcelable {
     //properties
+    private int id;
     private String title;
     private String author;
     private String description;
     private String cover;
     private double rating;
 
-    //constructor
+    //constructors
     public Book(String title, String author, String description, String cover, double rating) {
         this.title = title;
         this.author = author;
@@ -27,7 +28,23 @@ public class Book implements Parcelable {
         this.rating = rating;
     }
 
+    public Book(int id, String title, String author, String description, String cover, double rating) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.description = description;
+        this.cover = cover;
+        this.rating = rating;
+    }
+
     //getters and setters
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -65,6 +82,7 @@ public class Book implements Parcelable {
 
     //Parcelable implementation
     protected Book(Parcel in) {
+        this.id = in.readInt();
         this.title = in.readString();
         this.author = in.readString();
         this.description = in.readString();
