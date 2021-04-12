@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -88,7 +89,7 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
         db = new BookDatabase(context); //setting up the database
 
         //setting the functionality of our delete "button" (which is actually a textview)
-        holder.xButton.setOnClickListener(new View.OnClickListener() {
+        holder.returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //delete the book from the database according to its id
@@ -125,7 +126,7 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
         protected TextView description;
         protected ImageView cover;
         protected TextView rating;
-        protected TextView xButton;
+        protected Button returnButton;
 
         /**
          * @param itemView itemView
@@ -137,7 +138,7 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
             this.description = itemView.findViewById(R.id.borrowedDesc);
             this.cover = itemView.findViewById(R.id.borrowedCover);
             this.rating = itemView.findViewById(R.id.yourRating);
-            this.xButton = itemView.findViewById(R.id.x);
+            this.returnButton = itemView.findViewById(R.id.returnButton);
         }
     }
 }
