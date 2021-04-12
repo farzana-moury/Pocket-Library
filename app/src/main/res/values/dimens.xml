@@ -17,7 +17,6 @@
     <!--  Publishers pages dimensions  -->
     <dimen name="publisher_titleSize">35sp</dimen>
 
-
     <!--  Catalog page dimensions  -->
     <dimen name="catalog_size1">15dp</dimen>
     <dimen name="catalog_size2">130dp</dimen>
@@ -30,6 +29,9 @@
     <dimen name="letterspacing">0.07</dimen>
     <dimen name="starspacing">2dp</dimen>
     <dimen name="starmargin">22dp</dimen>
+
+    <!--  My books page dimensions  -->
+    <dimen name="desc_height">60dp</dimen>
 
     <!--  Credits page dimensions  -->
     <dimen name="text_size">20sp</dimen>
