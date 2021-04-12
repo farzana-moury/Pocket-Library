@@ -109,6 +109,7 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
             public void onClick(View v) {
 
                 EditText ratingEditText = new EditText(context);
+                ratingEditText.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
                 //show an alert dialogue box allowing user to rate
                 new AlertDialog.Builder(context)
@@ -145,6 +146,7 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
             public void onClick(View v) {
 
                 EditText ratingEditText = new EditText(context);
+                ratingEditText.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
                 //show an alert dialogue box allowing user to rate
                 new AlertDialog.Builder(context)
