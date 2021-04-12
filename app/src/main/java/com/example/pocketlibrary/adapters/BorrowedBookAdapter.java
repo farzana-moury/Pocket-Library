@@ -11,11 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pocketlibrary.R;
+import com.example.pocketlibrary.database.BookDatabase;
 import com.example.pocketlibrary.pojo.Book;
 import com.squareup.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import static com.example.pocketlibrary.fragments.BooksFragment.adapter;
+import static com.example.pocketlibrary.fragments.BooksFragment.db;
+import static com.example.pocketlibrary.fragments.BooksFragment.myBooksRecyclerView;
 
 /**
  * Custom book adapter for My books fragment recyclerview
@@ -78,6 +83,25 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
         }
 
         holder.rating.setText(String.format("%s", book.getRating()));
+
+
+        db = new BookDatabase(context); //setting up the database
+
+        //setting the functionality of our delete "button" (which is actually a textview)
+        holder.xButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //delete the book from the database according to its id
+                db.deleteBook(book.getId());
+
+                books.remove(position); //remove the book from the arraylist
+
+                notifyDataSetChanged(); //update the adapter
+                myBooksRecyclerView.setAdapter(adapter);
+            }
+        });
+
+        db.close(); //close the database safely
     }
 
     /**
@@ -101,6 +125,7 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
         protected TextView description;
         protected ImageView cover;
         protected TextView rating;
+        protected TextView xButton;
 
         /**
          * @param itemView itemView
@@ -112,6 +137,7 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
             this.description = itemView.findViewById(R.id.borrowedDesc);
             this.cover = itemView.findViewById(R.id.borrowedCover);
             this.rating = itemView.findViewById(R.id.yourRating);
+            this.xButton = itemView.findViewById(R.id.x);
         }
     }
 }

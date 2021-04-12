@@ -1,5 +1,6 @@
 package com.example.pocketlibrary.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -33,6 +34,9 @@ public class BooksFragment extends Fragment {
 
     public static BookDatabase db;
     public static ArrayList<Book> myBooks = new ArrayList<>();
+    public static RecyclerView myBooksRecyclerView;
+    @SuppressLint("StaticFieldLeak")
+    public static BorrowedBookAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,7 +45,7 @@ public class BooksFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_books, container, false);
 
         //setting the recyclerview for this fragment
-        RecyclerView myBooksRecyclerView = view.findViewById(R.id.borrowedBookRecyclerView); //containing the books we borrowed
+        myBooksRecyclerView = view.findViewById(R.id.borrowedBookRecyclerView); //containing the books we borrowed
 
         myBooksRecyclerView.setLayoutManager(new LinearLayoutManager(getContext())); //setting the layout manager
 
@@ -49,9 +53,10 @@ public class BooksFragment extends Fragment {
 
         myBooks = db.getAllBooks(); //retrieving all our books from the database and storing it into an array
 
-        db.close(); //closing the database safely
+        adapter = new BorrowedBookAdapter(myBooks, getContext());
+        myBooksRecyclerView.setAdapter(adapter); //setting the adapter
 
-        myBooksRecyclerView.setAdapter(new BorrowedBookAdapter(myBooks, getContext())); //setting the adapter
+        db.close(); //closing the database safely
 
         return view;
     }
