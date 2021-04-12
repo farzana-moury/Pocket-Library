@@ -31,4 +31,6 @@
     <dimen name="starspacing">2dp</dimen>
     <dimen name="starmargin">22dp</dimen>
 
+    <!--  Credits page dimensions  -->
+    <dimen name="text_size">20sp</dimen>
 </resources>

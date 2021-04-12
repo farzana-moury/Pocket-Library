@@ -20,6 +20,7 @@
             android:id="@+id/welcomeTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/logo_margin"
             android:fontFamily="@font/days_one"
             android:text="@string/welcome"
             android:textAlignment="center"
@@ -39,7 +40,7 @@
             android:id="@+id/welcomeDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/welcomeText_margin"
+            android:layout_marginBottom="@dimen/logo_margin"
             android:fontFamily="sans-serif"
             android:lineSpacingExtra="@dimen/line_spacing"
             android:text="@string/welcome_desc"
@@ -47,5 +48,24 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/white"
             android:textSize="@dimen/welcome_textSize" />
+
+        <ImageView
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/welcome_titleSize"
+            android:src="@drawable/ic_baseline_location_on_24" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+            android:layout_marginBottom="@dimen/logo_margin"
+            android:fontFamily="@font/days_one"
+            android:letterSpacing="@dimen/letterspacing"
+            android:text="@string/location"
+            android:textAlignment="center"
+            android:textColor="@color/secondary_variant"
+            android:textSize="@dimen/catalog_text1" />
     </LinearLayout>
 </ScrollView>

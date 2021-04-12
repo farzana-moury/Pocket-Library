@@ -1,5 +1,7 @@
 package com.example.pocketlibrary.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +9,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.pocketlibrary.R;
+import com.google.android.material.snackbar.Snackbar;
 
 /**
  * Welcome screen contains app overview - Pocket Library
@@ -23,6 +27,29 @@ public class WelcomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_welcome, container, false);
+        View view = inflater.inflate(R.layout.fragment_welcome, container, false);
+
+        //common intent - location
+        ImageView locationIcon = view.findViewById(R.id.location);
+        locationIcon.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                // using common intents to store location data
+                Uri pocketLibrary = Uri.parse("geo:42.34251983898167, -83.05440817072393");
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, pocketLibrary);
+
+                // see if there is a software that can resolve this activity
+                if(intent.resolveActivity(getActivity().getPackageManager()) != null){
+                    // as long as it does not equal null, do this task
+                    // display error message here
+                    Snackbar.make(getView(), "No app installed", Snackbar.LENGTH_SHORT).show();
+                }else{
+                    startActivity(intent);
+                }
+            }
+        });
+
+        return view;
     }
 }
