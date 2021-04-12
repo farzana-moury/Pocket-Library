@@ -92,12 +92,10 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
             @Override
             public void onClick(View v) {
                 //delete the book from the database according to its id
-                db.deleteBook(book.getId());
-
-                books.remove(position); //remove the book from the arraylist
-
-                notifyDataSetChanged(); //update the adapter
-                myBooksRecyclerView.setAdapter(adapter);
+                    db.deleteBook(book.getId());
+                    books.remove(position); //remove the book from the arraylist
+                    notifyDataSetChanged(); //update the adapter
+                    myBooksRecyclerView.setAdapter(adapter);
             }
         });
 

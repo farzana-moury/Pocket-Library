@@ -86,14 +86,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
                 //the book is added to the books database, to be shown in the My books fragment
                 //TODO: - Figure out how to create only ONCE (use a boolean flag) and then be able to
                 // create it once the book is returned (is no longer in the books fragment - ie. deleted)
-
                 db.createBook(new Book(book.getTitle(), book.getAuthor(), book.getDescription(), book.getCover(), book.getRating()));
             }
         });
 
         db.close(); //closing the database safely
-
-//        holder.rating.setText(String.format("%s", book.getRating()));
     }
 
     /**
@@ -117,7 +114,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
         protected TextView description;
         protected ImageView cover;
         protected Button borrowButton;
-//        protected TextView rating;
 
         /**
          * @param itemView itemView
@@ -129,7 +125,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
             this.description = itemView.findViewById(R.id.bookDesc);
             this.cover = itemView.findViewById(R.id.bookCover);
             this.borrowButton = itemView.findViewById(R.id.borrowButton);
-//            this.rating = itemView.findViewById(R.id.bookRating);
         }
     }
 }
