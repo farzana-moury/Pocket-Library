@@ -32,6 +32,9 @@
     <string name="ratings">No Ratings</string>
     <string name="borrow">Borrow</string>
 
+    <!--  My books fragment strings  -->
+    <string name="your_rating">Your Rating:</string>
+    <string name="return_but">Return</string>
 
     <!--  Credits fragment strings  -->
     <string name="credits_content">Credits Image</string>

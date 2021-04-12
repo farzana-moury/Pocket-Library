@@ -32,6 +32,9 @@
 
     <!--  My books page dimensions  -->
     <dimen name="desc_height">60dp</dimen>
+    <dimen name="size1">210dp</dimen>
+    <dimen name="size2">24dp</dimen>
+    <dimen name="size3">48dp</dimen>
 
     <!--  Credits page dimensions  -->
     <dimen name="text_size">20sp</dimen>
