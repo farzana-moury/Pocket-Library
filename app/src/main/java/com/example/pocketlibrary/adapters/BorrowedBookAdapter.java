@@ -39,10 +39,7 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
     private ArrayList<Book> books;
     private Context context;
 
-    public static String bookTitle;
-    public static String bookAuthor;
-    public static String bookDescription;
-    public static String book;
+    public static final String BOOK = "Book";
 
     //constructor
     public BorrowedBookAdapter(ArrayList<Book> books, Context context){
@@ -61,6 +58,7 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
     public CustomBorrowedBookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.borrowed_book_item_view, parent, false);
+
         return new CustomBorrowedBookViewHolder(view);
     }
 
@@ -87,9 +85,6 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
             holder.cover.setImageResource(R.drawable.side_nav_bar);
         }
 
-        holder.rating.setText(String.format("%s", book.getRating()));
-
-
         db = new BookDatabase(context); //setting up the database
 
         //setting the functionality of our delete "button" (which is actually a textview)
@@ -105,6 +100,8 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
                 myBooksRecyclerView.setAdapter(adapter);
             }
         });
+
+        db.close(); //close the database safely
 
         //upon clicking the textview "your rating"
         holder.ratingTextView.setOnClickListener(new View.OnClickListener() {
@@ -123,19 +120,64 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 //the action that occurs when user clicks "ok"
-                                holder.rating.setText(ratingEditText.getText());
-                                db.updateBook(new Book(book.getTitle(), book.getAuthor(), book.getDescription(), book.getCover(),
-                                                        Double.parseDouble(ratingEditText.getText().toString())));
-                                notifyDataSetChanged();
-                                myBooksRecyclerView.setAdapter(adapter);
+                                String yourRating = ratingEditText.getText().toString(); //grab string from edit text
+
+                                db = new BookDatabase(context); //setting up the database
+
+                                db.updateBook(book.getId(), yourRating); //update the book
+
+                                book.setRating(Double.parseDouble(yourRating)); //setting the rating
+
+                                notifyDataSetChanged(); //notify that data has changed
+
+                                myBooksRecyclerView.setAdapter(adapter); //setting the adapter
+
+                                db.close(); //close the database safely
                             }
                         }).setNegativeButton("CANCEL", null) //user cancels the rating action
                         .show();
             }
         });
 
-        db.close(); //close the database safely
+        //the same applies when you click the rating number too
+        holder.rating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                EditText ratingEditText = new EditText(context);
+
+                //show an alert dialogue box allowing user to rate
+                new AlertDialog.Builder(context)
+                        .setTitle("Rate your book")
+                        .setMessage("Provide your rating in the form x.x and between 0.0 and 5.0")
+                        .setIcon(R.drawable.ic_baseline_star_24)
+                        .setView(ratingEditText) //the edit text where user will provide their rating
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //the action that occurs when user clicks "ok"
+                                String yourRating = ratingEditText.getText().toString(); //grab string from edit text
+
+                                db = new BookDatabase(context); //setting up the database
+
+                                db.updateBook(book.getId(), yourRating); //update the book
+
+                                book.setRating(Double.parseDouble(yourRating)); //setting the rating
+
+                                notifyDataSetChanged(); //notify that data has changed
+
+                                myBooksRecyclerView.setAdapter(adapter); //setting the adapter
+
+                                db.close(); //close the database safely
+                            }
+                        }).setNegativeButton("CANCEL", null) //user cancels the rating action
+                        .show();
+            }
+        });
+
+
+
+        holder.rating.setText(String.format("%s", book.getRating()));
 
     }
 

@@ -113,22 +113,16 @@ public class BookDatabase extends SQLiteOpenHelper {
     /**
      * update method
      */
-    public int updateBook(Book book){
-        SQLiteDatabase db = getWritableDatabase(); //opening the database
+    public void updateBook(int id, String rating){
+        SQLiteDatabase db = this.getReadableDatabase(); //opening the database
 
-        //content values (an associative array with name value pairs)
-        ContentValues values = new ContentValues();
+        //query that will allow us to update a record's rating according to its id
+        String updateQuery = "UPDATE " + TABLE_BOOKS + " SET " + COLUMN_RATING + " = " + rating + " WHERE " + COLUMN_ID + " = " + id;
 
-        //storing the values into the array
-        values.put(COLUMN_TITLE, book.getTitle());
-        values.put(COLUMN_AUTHOR, book.getAuthor());
-        values.put(COLUMN_DESC, book.getDescription());
-        values.put(COLUMN_COVER, book.getCover());
-        values.put(COLUMN_RATING, "" + book.getRating());
+        //executing the query
+        db.execSQL(updateQuery);
 
-        //using the update query to store the updated the information into the table
-        return db.update(TABLE_BOOKS, values, COLUMN_ID + "=?",
-                new String[]{String.valueOf(book.getId())});
+        db.close(); //closing the database
     }
 
     /**

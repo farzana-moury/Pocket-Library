@@ -54,6 +54,7 @@ public class BooksFragment extends Fragment {
         myBooks = db.getAllBooks(); //retrieving all our books from the database and storing it into an array
 
         adapter = new BorrowedBookAdapter(myBooks, getContext());
+
         myBooksRecyclerView.setAdapter(adapter); //setting the adapter
 
         db.close(); //closing the database safely
