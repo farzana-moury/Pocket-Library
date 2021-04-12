@@ -1,10 +1,14 @@
 package com.example.pocketlibrary.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -102,7 +106,37 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
             }
         });
 
+        //upon clicking the textview "your rating"
+        holder.ratingTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                EditText ratingEditText = new EditText(context);
+
+                //show an alert dialogue box allowing user to rate
+                new AlertDialog.Builder(context)
+                        .setTitle("Rate your book")
+                        .setMessage("Provide your rating in the form x.x and between 0.0 and 5.0")
+                        .setIcon(R.drawable.ic_baseline_star_24)
+                        .setView(ratingEditText) //the edit text where user will provide their rating
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //the action that occurs when user clicks "ok"
+                                holder.rating.setText(ratingEditText.getText());
+                                db.updateBook(new Book(book.getTitle(), book.getAuthor(), book.getDescription(), book.getCover(),
+                                                        Double.parseDouble(ratingEditText.getText().toString())));
+                                notifyDataSetChanged();
+                                myBooksRecyclerView.setAdapter(adapter);
+                            }
+                        }).setNegativeButton("CANCEL", null) //user cancels the rating action
+                        .show();
+            }
+        });
+
         db.close(); //close the database safely
+
+
     }
 
     /**
@@ -127,6 +161,7 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
         protected ImageView cover;
         protected TextView rating;
         protected Button returnButton;
+        protected TextView ratingTextView;
 
         /**
          * @param itemView itemView
@@ -139,6 +174,7 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
             this.cover = itemView.findViewById(R.id.borrowedCover);
             this.rating = itemView.findViewById(R.id.yourRating);
             this.returnButton = itemView.findViewById(R.id.returnButton);
+            this.ratingTextView = itemView.findViewById(R.id.your_rating);
         }
     }
 }
