@@ -158,6 +158,35 @@ public class MainActivity extends AppCompatActivity {
                         .show();
                 return true;
             }
+            case R.id.action_settings4:{ //clear books
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("Clear books")
+                        .setMessage("Are you sure you want to delete your ratings? All ratings will be reset.")
+                        .setPositiveButton("CLEAR", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                db = new BookDatabase(MainActivity.this); //accessing database
+                                ArrayList<Book> books = db.getAllBooks(); //acessing all its books
+
+                                for(Book book : books){ //iterating through and deleting each book
+                                    book.setRating(0.0);
+                                    db.deleteBook(book.getId());
+                                }
+
+                                books.clear(); //clearing the books array itself
+
+                                //updating the recyclerview with adapter
+                                adapter = new BorrowedBookAdapter(books, MainActivity.this);
+
+                                adapter.notifyDataSetChanged(); //notify that data has changed
+
+                                myBooksRecyclerView.setAdapter(adapter); //setting the adapter
+
+                            }
+                        }).setNegativeButton("CANCEL", null) //user cancels the clear action
+                        .show();
+                return true;
+            }
 
         }
         return super.onOptionsItemSelected(item);
