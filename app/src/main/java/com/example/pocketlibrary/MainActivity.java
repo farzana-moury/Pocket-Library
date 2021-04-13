@@ -9,8 +9,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.pocketlibrary.database.BookDatabase;
+import com.example.pocketlibrary.fragments.WelcomeFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -82,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                TextView yourUsername = findViewById(R.id.username); //grabbing the username (in nav header main)
+                                yourUsername.setText(username.getText()); //setting it to the new username your provide
                             }
                         }).setNegativeButton("CANCEL", null) //user cancels the rating action
                         .show();
