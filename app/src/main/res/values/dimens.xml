@@ -38,4 +38,7 @@
 
     <!--  Credits page dimensions  -->
     <dimen name="text_size">20sp</dimen>
+
+    <!--  Nav_Header_Main dimensions  -->
+    <dimen name="icon_size">100dp</dimen>
 </resources>
