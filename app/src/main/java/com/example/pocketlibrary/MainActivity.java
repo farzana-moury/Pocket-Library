@@ -102,7 +102,8 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                TextView yourEmail = findViewById(R.id.yourEmail); //grabbing the email (in nav header main)
+                                yourEmail.setText(email.getText()); //setting it to the new email your provide
                             }
                         }).setNegativeButton("CANCEL", null) //user cancels the rating action
                         .show();
