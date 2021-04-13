@@ -34,7 +34,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
     private ArrayList<Book> books;
     private Context context;
 
-    //constructor
+    /**
+     * constructor.
+     * @param books books
+     * @param context context
+     */
     public BookAdapter(ArrayList<Book> books, Context context){
         this.books = books;
         this.context = context;
@@ -60,21 +64,26 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
      */
     @Override
     public void onBindViewHolder(@NonNull CustomBookViewHolder holder, int position) {
+        //setting the book to the current book item
         Book book = books.get(position);
+
+        //assigning the information of the book to the view objects in the holder
         holder.title.setText(book.getTitle());
         holder.author.setText(book.getAuthor());
         holder.description.setText(book.getDescription());
 
-        if(!book.getCover().equals("")){
+        //handling the book cover image
+        if(!book.getCover().equals("")){ //if it is not empty
             new Picasso.Builder(context)
+                    //we set it to the book's image (OKHttp3Downloader takes care of redirects)
                     .downloader(new OkHttp3Downloader(context))
                     .build()
-                    .load(book.getCover())
+                    .load(book.getCover()) //loading the image
                     .placeholder(R.drawable.side_nav_bar)
                     .resize(130, 200)
                     .into(holder.cover);
         }else{
-            holder.cover.setImageResource(R.drawable.side_nav_bar);
+            holder.cover.setImageResource(R.drawable.side_nav_bar); //otherwise we have a placeholder image
         }
 
         db = new BookDatabase(context); //setting up the database
