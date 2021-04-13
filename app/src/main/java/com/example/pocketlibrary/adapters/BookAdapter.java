@@ -1,9 +1,10 @@
-package com.example.pocketlibrary.custom_adapters;
+package com.example.pocketlibrary.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,9 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pocketlibrary.R;
+import com.example.pocketlibrary.database.BookDatabase;
 import com.example.pocketlibrary.pojo.Book;
+import com.squareup.picasso.OkHttp3Downloader;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import static com.example.pocketlibrary.fragments.BooksFragment.db;
 
 /**
  * Custom adapter class for the book recyclerview
@@ -28,7 +34,11 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
     private ArrayList<Book> books;
     private Context context;
 
-    //constructor
+    /**
+     * constructor.
+     * @param books books
+     * @param context context
+     */
     public BookAdapter(ArrayList<Book> books, Context context){
         this.books = books;
         this.context = context;
@@ -54,12 +64,40 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
      */
     @Override
     public void onBindViewHolder(@NonNull CustomBookViewHolder holder, int position) {
+        //setting the book to the current book item
         Book book = books.get(position);
+
+        //assigning the information of the book to the view objects in the holder
         holder.title.setText(book.getTitle());
         holder.author.setText(book.getAuthor());
         holder.description.setText(book.getDescription());
-        holder.cover.setImageResource(book.getCover());
-        holder.rating.setText(String.format("%s", book.getRating()));
+
+        //handling the book cover image
+        if(!book.getCover().equals("")){ //if it is not empty
+            new Picasso.Builder(context)
+                    //we set it to the book's image (OKHttp3Downloader takes care of redirects)
+                    .downloader(new OkHttp3Downloader(context))
+                    .build()
+                    .load(book.getCover()) //loading the image
+                    .placeholder(R.drawable.side_nav_bar)
+                    .resize(130, 200)
+                    .into(holder.cover);
+        }else{
+            holder.cover.setImageResource(R.drawable.side_nav_bar); //otherwise we have a placeholder image
+        }
+
+        db = new BookDatabase(context); //setting up the database
+
+        //when we decide to borrow a book...
+        holder.borrowButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //the book is added to the books database, to be shown in the My books fragment
+                db.createBook(new Book(book.getTitle(), book.getAuthor(), book.getDescription(), book.getCover(), book.getRating()));
+            }
+        });
+
+        db.close(); //closing the database safely
     }
 
     /**
@@ -82,7 +120,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
         protected TextView author;
         protected TextView description;
         protected ImageView cover;
-        protected TextView rating;
+        protected Button borrowButton;
 
         /**
          * @param itemView itemView
@@ -93,7 +131,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
             this.author = itemView.findViewById(R.id.bookAuthor);
             this.description = itemView.findViewById(R.id.bookDesc);
             this.cover = itemView.findViewById(R.id.bookCover);
-            this.rating = itemView.findViewById(R.id.bookRating);
+            this.borrowButton = itemView.findViewById(R.id.borrowButton);
         }
     }
 }

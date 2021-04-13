@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/catalog_margin"
+
+    android:background="@drawable/side_nav_bar"
+    app:cardCornerRadius="@dimen/catalog_margin">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/plum_purple"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/borrowedCover"
+            android:layout_width="@dimen/catalog_size2"
+            android:layout_height="@dimen/catalog_size3"
+            android:layout_marginStart="@dimen/catalog_margin"
+            android:layout_marginTop="@dimen/catalog_margin"
+            android:layout_marginBottom="@dimen/catalog_margin"
+            android:contentDescription="@string/cover_desc"
+            android:foregroundGravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/returnButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/side_nav_bar" />
+
+        <TextView
+            android:id="@+id/borrowedTitle"
+            android:layout_width="@dimen/size1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/welcome_margin"
+            android:layout_marginTop="@dimen/size2"
+            android:layout_marginEnd="@dimen/welcome_margin"
+            android:fontFamily="@font/days_one"
+            android:text="@string/text_placeholder"
+            android:textColor="@color/white"
+            android:textSize="@dimen/catalog_text1"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="@fraction/catalog_bias2"
+            app:layout_constraintStart_toEndOf="@+id/borrowedCover"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/borrowedAuthor"
+            android:layout_width="@dimen/size1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/welcome_margin"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/welcome_margin"
+            android:fontFamily="@font/days_one"
+            android:text="@string/text_placeholder"
+            android:textColor="@color/primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="@fraction/catalog_bias2"
+            app:layout_constraintStart_toEndOf="@+id/borrowedCover"
+            app:layout_constraintTop_toBottomOf="@+id/borrowedTitle" />
+
+        <TextView
+            android:id="@+id/borrowedDesc"
+            android:layout_width="@dimen/size1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/welcome_margin"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="@dimen/welcome_margin"
+            android:layout_marginBottom="20dp"
+            android:text="@string/text_placeholder"
+            android:textColor="@color/secondary"
+            app:layout_constraintBottom_toTopOf="@+id/your_rating"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="@fraction/catalog_bias2"
+            app:layout_constraintStart_toEndOf="@+id/borrowedCover"
+            app:layout_constraintTop_toBottomOf="@+id/borrowedAuthor"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/your_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/nav_header_vertical_spacing"
+            android:layout_marginBottom="@dimen/size2"
+            android:fontFamily="@font/days_one"
+            android:text="@string/your_rating"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/yourRating" />
+
+        <TextView
+            android:id="@+id/yourRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/logo_margin"
+            android:layout_marginBottom="@dimen/size2"
+            android:fontFamily="@font/days_one"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/returnButton"
+            android:layout_width="@dimen/catalog_size2"
+            android:layout_height="@dimen/size3"
+            android:layout_marginStart="@dimen/catalog_margin"
+            android:layout_marginBottom="@dimen/catalog_margin"
+            android:text="@string/return_but"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -19,20 +19,28 @@ public class BookSingleton {
     private RequestQueue requestQueue;
     private static Context context;
 
-    //constructor
+    /**
+     * constructor.
+     * @param context context
+     */
     private BookSingleton(Context context){
         this.context = context;
     }
 
-    //getInstance method
+    /**
+     * getInstance method
+     */
     public static BookSingleton getInstance(Context context) {
         if(instance == null){
-            instance = new BookSingleton(context);
+            instance = new BookSingleton(context); //unless we don't have the instance and need to create it
         }
-        return instance;
+        return instance; //we'll always use the same instance
     }
 
-    //getRequestQueue method
+    /**
+     * getRequestQueue method
+     * @return requestQueue
+     */
     public RequestQueue getRequestQueue(){
         if(requestQueue == null){
             requestQueue = Volley.newRequestQueue(context.getApplicationContext());

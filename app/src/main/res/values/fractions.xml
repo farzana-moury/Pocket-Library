@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  Fractions for Catalog fragment  -->
+    <fraction name="catalog_bias1">1</fraction>
+    <fraction name="catalog_bias2">0</fraction>
+</resources>

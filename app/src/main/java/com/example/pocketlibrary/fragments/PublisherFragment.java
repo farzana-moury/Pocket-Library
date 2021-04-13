@@ -58,6 +58,10 @@ public class PublisherFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * onCreate method
+     * @param savedInstanceState savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +76,14 @@ public class PublisherFragment extends Fragment {
         }
     }
 
+    /**
+     * implemented method onCreateView
+     *
+     * @param inflater inflater
+     * @param container container
+     * @param savedInstanceState savedInstance state
+     * @return view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -85,6 +97,7 @@ public class PublisherFragment extends Fragment {
         }
         if(image != 0){
             ImageView publisherImage = view.findViewById(R.id.image);
+            publisherImage.setImageResource(image);
         }
         if(description != null){
             TextView publisherDesc = view.findViewById(R.id.description);
