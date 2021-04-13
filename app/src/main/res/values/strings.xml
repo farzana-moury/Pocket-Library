@@ -8,6 +8,7 @@
     <string name="action_settings1">Change username</string>
     <string name="action_settings2">Change email</string>
     <string name="action_settings3">Reset ratings</string>
+    <string name="action_settings4">Clear books</string>
 
     <string name="menu_catalog">Catalog</string>
     <string name="menu_publishers">Publishers</string>
