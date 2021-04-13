@@ -41,17 +41,33 @@ public class BookDatabase extends SQLiteOpenHelper {
     public static final String CREATE_BOOKS_TABLE = "CREATE TABLE " + TABLE_BOOKS + "(" + COLUMN_ID + " INTEGER PRIMARY KEY, " +
             COLUMN_TITLE + " TEXT, " + COLUMN_AUTHOR + " TEXT, " + COLUMN_DESC + " TEXT, " + COLUMN_COVER + " TEXT, " + COLUMN_RATING + " TEXT)";
 
-    //constructor
+    /**
+     * constructor
+     * @param context context
+     */
     public BookDatabase(@Nullable Context context) {
         super(context, DATABASE_NAME,null, DATABASE_VERSION);
     }
 
     //implemented methods
+
+    /**
+     * implemented method onCreate
+     *
+     * @param db db
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_BOOKS_TABLE); //executing the query to create the books table
     }
 
+    /**
+     * implemented method onUpgrade
+     *
+     * @param db db
+     * @param oldVersion old version
+     * @param newVersion new version
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
