@@ -38,9 +38,11 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
     private ArrayList<Book> books;
     private Context context;
 
-    public static final String BOOK = "Book";
-
-    //constructor
+    /**
+     * constructor.
+     * @param books books
+     * @param context context
+     */
     public BorrowedBookAdapter(ArrayList<Book> books, Context context){
         this.books = books;
         this.context = context;
@@ -67,11 +69,13 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
      */
     @Override
     public void onBindViewHolder(@NonNull CustomBorrowedBookViewHolder holder, int position) {
+        //setting up the book and holder view objects
         Book book = books.get(position);
         holder.title.setText(book.getTitle());
         holder.author.setText(book.getAuthor());
         holder.description.setText(book.getDescription());
 
+        //configuring the book cover image and setting the holder's imageview to it
         if(!book.getCover().equals("")){
             new Picasso.Builder(context)
                     .downloader(new OkHttp3Downloader(context))
@@ -105,6 +109,7 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
             @Override
             public void onClick(View v) {
 
+                //edit text that will appear inside the dialog box for user input
                 EditText ratingEditText = new EditText(context);
                 ratingEditText.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
@@ -174,8 +179,7 @@ public class BorrowedBookAdapter extends RecyclerView.Adapter<BorrowedBookAdapte
             }
         });
 
-
-
+        //setting the rating to the proper string format ie. 2.5
         holder.rating.setText(String.format("%s", book.getRating()));
 
     }
