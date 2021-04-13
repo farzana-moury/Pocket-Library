@@ -2,7 +2,6 @@ package com.example.pocketlibrary;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 
 import com.example.pocketlibrary.adapters.BorrowedBookAdapter;
 import com.example.pocketlibrary.database.BookDatabase;
-import com.example.pocketlibrary.fragments.WelcomeFragment;
 import com.example.pocketlibrary.pojo.Book;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -38,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
+    /**
+     * onCreate method. Here we put initialization code.
+     *
+     * @param savedInstanceState the saved Instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +69,12 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
+    /**
+     * onCreateOptionsMenu
+     *
+     * @param menu menu containing options
+     * @return boolean
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -73,6 +82,12 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Method contains actions regarding each menu item in the options menu (settings)
+     *
+     * @param item MenuItem item - the menu item
+     * @return boolean
+     */
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -121,14 +136,15 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                db = new BookDatabase(MainActivity.this);
-                                ArrayList<Book> books = db.getAllBooks();
+                                db = new BookDatabase(MainActivity.this); //accessing database
+                                ArrayList<Book> books = db.getAllBooks(); //acessing all its books
 
-                                for(Book book : books){
+                                for(Book book : books){ //iterating through and changing each book rating
                                     book.setRating(0.0);
-                                    db.updateBook(book.getId(), "0.0");
+                                    db.updateBook(book.getId(), "0.0"); //to 0 (reset)
                                 }
 
+                                //updating the recyclerview with adapter
                                 adapter = new BorrowedBookAdapter(books, MainActivity.this);
 
                                 adapter.notifyDataSetChanged(); //notify that data has changed
@@ -147,6 +163,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Method onSupportNavigateUp
+     * @return boolean
+     */
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

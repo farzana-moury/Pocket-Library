@@ -28,12 +28,21 @@ import java.util.ArrayList;
  */
 public class BooksFragment extends Fragment {
 
+    //static variables that are used in other parts of the app
     public static BookDatabase db;
     public static ArrayList<Book> myBooks = new ArrayList<>();
     public static RecyclerView myBooksRecyclerView;
     @SuppressLint("StaticFieldLeak")
     public static BorrowedBookAdapter adapter;
 
+    /**
+     * implemented method onCreateView
+     *
+     * @param inflater inflater
+     * @param container container
+     * @param savedInstanceState savedInstanceState
+     * @return view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

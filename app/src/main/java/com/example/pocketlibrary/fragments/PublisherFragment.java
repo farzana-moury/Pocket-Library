@@ -58,6 +58,10 @@ public class PublisherFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * onCreate method
+     * @param savedInstanceState savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +76,14 @@ public class PublisherFragment extends Fragment {
         }
     }
 
+    /**
+     * implemented method onCreateView
+     *
+     * @param inflater inflater
+     * @param container container
+     * @param savedInstanceState savedInstance state
+     * @return view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

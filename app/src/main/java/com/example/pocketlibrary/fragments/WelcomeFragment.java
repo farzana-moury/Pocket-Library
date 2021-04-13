@@ -25,6 +25,14 @@ import com.google.android.material.snackbar.Snackbar;
  */
 public class WelcomeFragment extends Fragment {
 
+    /**
+     * implemented method onCreateView
+     *
+     * @param inflater inflater
+     * @param container container
+     * @param savedInstanceState savedInstance state
+     * @return view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

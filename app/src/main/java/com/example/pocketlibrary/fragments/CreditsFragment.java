@@ -25,6 +25,14 @@ import com.google.android.material.snackbar.Snackbar;
  */
 public class CreditsFragment extends Fragment {
 
+     /**
+     * implemented method onCreateView
+     *
+     * @param inflater inflater
+     * @param container container
+     * @param savedInstanceState savedInstance state
+     * @return view
+     */
     @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -137,7 +145,6 @@ public class CreditsFragment extends Fragment {
                 }
             }
         });
-
 
         return view;
     }

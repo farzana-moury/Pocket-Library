@@ -23,6 +23,14 @@ import com.example.pocketlibrary.R;
  */
 public class PublishersFragment extends Fragment {
 
+    /**
+     * implemented method onCreateView
+     *
+     * @param inflater inflater
+     * @param container container
+     * @param savedInstanceState savedInstance state
+     * @return view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,6 +62,13 @@ public class PublishersFragment extends Fragment {
         }
 
         //implemented methods
+
+        /**
+         * createFragment method will return a new instance of type Publisher in order of position in viewpager2
+         *
+         * @param position the position of the object in the viewpager2
+         * @return
+         */
         @NonNull
         @Override
         public Fragment createFragment(int position) {
@@ -71,6 +86,9 @@ public class PublishersFragment extends Fragment {
             }
         }
 
+        /**
+         * @return the size of the items together
+         */
         @Override
         public int getItemCount() {
             return 9;
