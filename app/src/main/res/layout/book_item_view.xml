@@ -108,6 +108,7 @@
             android:layout_height="@dimen/catalog_size1"
             android:layout_marginEnd="@dimen/catalog_margin"
             android:layout_marginBottom="@dimen/starmargin"
+            android:contentDescription="@string/ratings"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/bookRating"
             app:srcCompat="@drawable/ic_baseline_star_24" />
@@ -118,6 +119,7 @@
             android:layout_height="@dimen/catalog_size1"
             android:layout_marginEnd="@dimen/starspacing"
             android:layout_marginBottom="@dimen/starmargin"
+            android:contentDescription="@string/ratings"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView2"
             app:srcCompat="@drawable/ic_baseline_star_24" />
@@ -128,6 +130,7 @@
             android:layout_height="@dimen/catalog_size1"
             android:layout_marginEnd="@dimen/starspacing"
             android:layout_marginBottom="@dimen/starmargin"
+            android:contentDescription="@string/ratings"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView3"
             app:srcCompat="@drawable/ic_baseline_star_24" />
