@@ -84,8 +84,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.CustomBookView
             @Override
             public void onClick(View v) {
                 //the book is added to the books database, to be shown in the My books fragment
-                //TODO: - Figure out how to create only ONCE (use a boolean flag) and then be able to
-                // create it once the book is returned (is no longer in the books fragment - ie. deleted)
                 db.createBook(new Book(book.getTitle(), book.getAuthor(), book.getDescription(), book.getCover(), book.getRating()));
             }
         });

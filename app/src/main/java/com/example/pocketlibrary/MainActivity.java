@@ -11,8 +11,10 @@ import android.view.Menu;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.pocketlibrary.adapters.BorrowedBookAdapter;
 import com.example.pocketlibrary.database.BookDatabase;
 import com.example.pocketlibrary.fragments.WelcomeFragment;
+import com.example.pocketlibrary.pojo.Book;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -25,6 +27,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import java.util.ArrayList;
 
 import static com.example.pocketlibrary.fragments.BooksFragment.adapter;
 import static com.example.pocketlibrary.fragments.BooksFragment.db;
@@ -117,6 +121,21 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                db = new BookDatabase(MainActivity.this);
+                                ArrayList<Book> books = db.getAllBooks();
+
+                                for(Book book : books){
+                                    book.setRating(0.0);
+                                    db.updateBook(book.getId(), "0.0");
+                                }
+
+                                adapter = new BorrowedBookAdapter(books, MainActivity.this);
+
+                                adapter.notifyDataSetChanged(); //notify that data has changed
+
+                                myBooksRecyclerView.setAdapter(adapter); //setting the adapter
+
+                                db.close();
 
                             }
                         }).setNegativeButton("CANCEL", null) //user cancels the rating action
