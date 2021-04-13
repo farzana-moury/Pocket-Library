@@ -5,10 +5,13 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +32,10 @@ public class WelcomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_welcome, container, false);
+
+        //adding the transition animation
+        Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.enter_anim); //welcome fragment fades in
+        view.setAnimation(animation);
 
         //common intent - location
         ImageView locationIcon = view.findViewById(R.id.location);
