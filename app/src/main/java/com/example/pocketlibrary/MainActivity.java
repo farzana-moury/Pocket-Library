@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_settings4:{ //clear books
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle("Clear books")
-                        .setMessage("Are you sure you want to delete your ratings? All ratings will be reset.")
+                        .setMessage("Are you sure you want to clear your books? All books will be removed from your collection.")
                         .setPositiveButton("CLEAR", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
